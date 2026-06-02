@@ -8,7 +8,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 1.0
 
-requirements = python3,kivy,requests,beautifulsoup4,android,pyjnius
+requirements = python3,kivy,requests,beautifulsoup4,pyjnius
 
 orientation = portrait
 fullscreen = 0
