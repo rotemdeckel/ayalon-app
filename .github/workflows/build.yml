@@ -44,9 +44,12 @@ jobs:
           buildozer android debug 2>&1 | tee build.log
           grep -i "error\|exception\|failed\|traceback" build.log | tail -30 || true
 
+      - name: Find APK
+        run: find . -name "*.apk" 2>/dev/null || echo "No APK found anywhere"
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: ayalon-apk
-          path: buildozer_project/bin/*.apk
+          path: "**/*.apk"
           retention-days: 7
