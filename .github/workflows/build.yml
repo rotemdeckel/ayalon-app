@@ -41,11 +41,15 @@ jobs:
       - name: Build APK
         run: |
           cd buildozer_project
-          buildozer android debug 2>&1 | tee build.log
-          grep -i "error\|exception\|failed\|traceback" build.log | tail -30 || true
-
-      - name: Find APK
-        run: find . -name "*.apk" 2>/dev/null || echo "No APK found anywhere"
+          buildozer android debug 2>&1 | tee /tmp/build.log
+          echo "=== LAST 100 LINES ==="
+          tail -100 /tmp/build.log
+          echo "=== SEARCHING FOR APK ==="
+          find /home/runner -name "*.apk" 2>/dev/null || echo "No APK found"
+          echo "=== BIN DIRECTORY ==="
+          ls -la bin/ 2>/dev/null || echo "No bin directory"
+          echo "=== BUILDOZER DIRECTORY ==="
+          ls -la .buildozer/android/platform/build-arm64-v8a/dists/ 2>/dev/null || echo "No dists"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
