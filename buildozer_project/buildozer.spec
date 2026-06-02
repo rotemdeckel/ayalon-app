@@ -8,7 +8,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 1.0
 
-requirements = python3,kivy,requests,beautifulsoup4,pyjnius
+requirements = python3==3.11.9,kivy==2.2.1,requests,beautifulsoup4
 
 orientation = portrait
 fullscreen = 0
@@ -17,10 +17,9 @@ android.permissions = INTERNET, READ_SMS, RECEIVE_SMS
 android.api = 33
 android.minapi = 26
 android.ndk = 25b
-android.sdk = 33
 android.accept_sdk_license = True
 
-android.arch = arm64-v8a
+android.archs = arm64-v8a
 
 [buildozer]
 log_level = 2
